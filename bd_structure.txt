@@ -1,0 +1,26 @@
+users:
+- id
+- name
+- email
+- passwordHash
+- token
+- isSeller: true
+
+categories:
+-id
+-name 
+-slug
+
+ads
+-id
+-images [{url, default: true}]
+-idUser
+-dateCreated
+-title
+-category
+-price
+-priceNegotiable
+-description
+-views
+-status
+-stars
