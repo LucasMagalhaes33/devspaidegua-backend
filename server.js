@@ -23,6 +23,8 @@ server.use(fileupload());
 
 server.use(express.static(__dirname+'/public'));
 
+const apiRoutes = require('./src/routes');
+
 server.get('/ping', (req, res)=>{
     res.json({pong: true});
 });
@@ -30,3 +32,5 @@ server.get('/ping', (req, res)=>{
 server.listen(process.env.PORT, ()=>{
     console.log(`- Rodando no endereço ${process.env.BASE}`);
 })
+
+server.use('/', apiRoutes);
