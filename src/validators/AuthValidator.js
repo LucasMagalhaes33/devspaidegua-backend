@@ -17,6 +17,17 @@ module.exports = {
             isLength: {options: { min: 6 }},
             errorMessage: 'Senha precisa ter pelo menos 6 caracteres'
         }
+    }),
+    signin: checkSchema ({
+        email: {
+            isEmail: true,
+            normalizeEmail: true,
+            errorMessage: 'Insira um email válido'
+        },
+        password: {
+            isLength: {options: { min: 6 }},
+            errorMessage: 'Senha precisa ter pelo menos 6 caracteres'
+        }
     })
 
 }
