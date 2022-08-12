@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const Category = require('../models/Category');
+const Ad = require("../models/Ad");
 
 module.exports = {
 
@@ -13,7 +15,7 @@ module.exports = {
         if(req.query.token){
             token = req.query.token;
         }
-        if(req.query.token){
+        if(req.body.token){
             token = req.body.token;
         }
 
