@@ -16,6 +16,10 @@ module.exports = {
         password: {
             isLength: {options: { min: 6 }},
             errorMessage: 'Senha precisa ter pelo menos 6 caracteres'
+        },
+        isSeller:  {
+            notEmpty: true,
+            errorMessage: 'Precisa selecionar o tipo de usuário'
         }
     }),
     signin: checkSchema ({

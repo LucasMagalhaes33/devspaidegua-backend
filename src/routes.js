@@ -13,14 +13,18 @@ router.get('/ping', (req, res)=> {
     res.json({pong: true});
 })
 
+//rota de cadastro e login
 router.post('/user/signin', AuthValidator.signin , AuthController.signin);
 router.post('/user/signup', AuthValidator.signup , AuthController.signup);
 
+//rota de listar as informações do próprio usuario e edição do usuário
 router.get('/user/me', Auth.private , UserController.info);
 router.put('/user/me', Auth.private , UserController.editAction);
 
+//listar categoria
 router.get('/categories', AdsController.getCategories);
 
+//listar e adicionar o assunto
 router.post('/ad/add', Auth.private , AdsController.addAction);
 router.get('/ad/list', AdsController.getList);
 router.get('ad/item', AdsController.getItem);
