@@ -71,7 +71,7 @@ module.exports = {
             email: data.email,
             passwordHash,
             token,
-            isSeller
+            isSeller: data.isSeller
         });
 
         await newUser.save();

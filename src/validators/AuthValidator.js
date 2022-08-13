@@ -18,6 +18,7 @@ module.exports = {
             errorMessage: 'Senha precisa ter pelo menos 6 caracteres'
         },
         isSeller:  {
+            isBoolean: true,
             notEmpty: true,
             errorMessage: 'Precisa selecionar o tipo de usuário'
         }
