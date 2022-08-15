@@ -8,6 +8,7 @@ const UserController = require('./controllers/UserController');
 const AdsController = require('./controllers/AdsController');
 
 const AuthValidator = require('./validators/AuthValidator');
+const UserValidatorJs = require('./validators/UserValidator.Js');
 
 router.get('/ping', (req, res)=> {
     res.json({pong: true});
@@ -19,7 +20,7 @@ router.post('/user/signup', AuthValidator.signup , AuthController.signup);
 
 //rota de listar as informações do próprio usuario e edição do usuário
 router.get('/user/me', Auth.private , UserController.info);
-router.put('/user/me', Auth.private , UserController.editAction);
+router.put('/user/me', UserValidatorJs.editAction ,Auth.private , UserController.editAction);
 
 //listar categoria
 router.get('/categories', AdsController.getCategories);
