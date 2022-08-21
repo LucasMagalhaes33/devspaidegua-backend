@@ -88,7 +88,35 @@ module.exports = {
         res.json({id: info._id});
 
     },
-    getList: (req, res) => {
+    getList: async (req, res) => {
+        //valores default para ordem de listagem, paginação, quantidade de anuncios, query e a categoria
+        let { sort =   'asc', offset = 0, limit = 8, q, cat } = req.query;
+
+        //sempre fazer a busca apenas para anuncios que tem status como ativo true
+        const adsData = await Ad.find({status: true}).exec();
+
+        //formatar as infoções da resposta da requisição
+        for(let i in adsData) {
+            //procurar a imagem default do anuncio, se não houver mandar imagem default do app
+            let image;
+
+            let defaultImg = adsData[i].imagees.find(e => e.default);
+            if(defaultImg) {
+                image = `${process.env.BASE}/media/${defaultImg.url}`;
+            } else {
+                image = `${process.env.BASE}/media/default.jpg`
+            }
+            
+            ads.push({
+                id: adsData[i]._id,
+                title: adsData[i].title,
+                price: adsData[i].price,
+                priceNegotiable: adsData[i].priceNegotiable,
+                image
+            })
+
+            res.json({ads});
+        }
 
     },
     getItem: (req, res) => {
